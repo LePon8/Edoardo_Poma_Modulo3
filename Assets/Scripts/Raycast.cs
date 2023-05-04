@@ -5,13 +5,13 @@ using UnityEngine;
 public class Raycast : MonoBehaviour
 {
 
-    [SerializeField] bool selected;
-
+    [SerializeField] bool selectedTor;
+    [SerializeField] bool selectedPosition;
     GameObject tor;
 
     private void Start()
     {
-        selected = false;
+        
     }
 
     // Update is called once per frame
@@ -33,7 +33,8 @@ public class Raycast : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    selected = true;
+                    selectedTor = true;
+                    selectedPosition = false;
                     Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
                     tor = hit.collider.gameObject;
 
@@ -44,10 +45,11 @@ public class Raycast : MonoBehaviour
 
 
             }
-            if(selected && hit.collider.CompareTag("Postazione"))
+            if(selectedTor && hit.collider.CompareTag("Postazione"))
             {
-                selected = false;
+                selectedTor = false;
                 Debug.DrawRay(ray.origin, ray.direction * 20, Color.cyan);
+                selectedPosition = true;
                 tor.transform.position = hit.collider.transform.position;
                 tor.transform.rotation = hit.collider.transform.rotation;
                 
