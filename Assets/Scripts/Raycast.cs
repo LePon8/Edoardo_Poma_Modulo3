@@ -6,7 +6,7 @@ public class Raycast : MonoBehaviour
 {
 
     [SerializeField] bool selectedTor;
-    [SerializeField] bool selectedPosition;
+    //[SerializeField] bool selectedPosition;
     GameObject tor;
 
     private void Start()
@@ -34,7 +34,7 @@ public class Raycast : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     selectedTor = true;
-                    selectedPosition = false;
+                    //selectedPosition = false;
                     Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
                     tor = hit.collider.gameObject;
 
@@ -49,10 +49,17 @@ public class Raycast : MonoBehaviour
             {
                 selectedTor = false;
                 Debug.DrawRay(ray.origin, ray.direction * 20, Color.cyan);
-                selectedPosition = true;
+                //selectedPosition = true;
                 tor.transform.position = hit.collider.transform.position;
                 tor.transform.rotation = hit.collider.transform.rotation;
                 
+            }
+
+            if(selectedTor && hit.collider.CompareTag("PostazioneTorretta"))
+            {
+                Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
+                tor.transform.position = hit.collider.transform.position;
+                tor.transform.rotation = hit.collider.transform.rotation;
             }
             
         }
