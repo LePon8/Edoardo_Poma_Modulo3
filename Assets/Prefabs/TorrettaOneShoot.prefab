@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1529290808694992520}
   - component: {fileID: 1529290808694992526}
   - component: {fileID: 1529290808694992521}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,9 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1529290808707078079}
   - component: {fileID: 1529290808707078078}
-  - component: {fileID: 1529290808707078076}
-  - component: {fileID: 8875952154404995963}
-  m_Layer: 0
+  - component: {fileID: 2444310056269144944}
+  - component: {fileID: 5865373553608939491}
+  - component: {fileID: 6121812516331139522}
+  m_Layer: 7
   m_Name: TorrettaOneShoot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -109,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1529290808707078073}
   m_LocalRotation: {x: 0, y: 0.9999467, z: -0, w: -0.01032329}
   m_LocalPosition: {x: 3.71, y: 0, z: 0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 2, z: 3}
   m_Children:
   - {fileID: 1529290808694992520}
   - {fileID: 1529290808707629759}
@@ -130,20 +131,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1529290808707078076
-MonoBehaviour:
+--- !u!136 &2444310056269144944
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529290808707078073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ebcfe3b55966c4aa81c962d8871b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  torrettaStats: {fileID: 11400000, guid: 96294c10b9643f0429a3dac200a128a2, type: 2}
---- !u!54 &8875952154404995963
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5865373553608939491
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,8 +159,28 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &6121812516331139522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529290808707078073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5af4b238b3090044b3ea074db99be8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 10
+  shootingTime: 1
+  shootRange: 5
+  bulletSpeed: 50
+  bulletPrefab: {fileID: 5705068087700518858, guid: f2e23ffa47a41d345a235b5699a58d9c, type: 3}
+  muzzle: {fileID: 1529290809397307508}
+  cc: {fileID: 2444310056269144944}
+  targetsInrange: []
 --- !u!1 &1529290808707629758
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +192,7 @@ GameObject:
   - component: {fileID: 1529290808707629759}
   - component: {fileID: 1529290808707629757}
   - component: {fileID: 1529290808707629756}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Muso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1529290809397307509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,13 +286,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529290809397307508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1529290808707629759}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &2963307024887696791
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +305,7 @@ GameObject:
   - component: {fileID: 2528906860725125093}
   - component: {fileID: 5476604684547544780}
   - component: {fileID: 6742409011006352261}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: PostazioneTorretta
   m_Icon: {fileID: 0}

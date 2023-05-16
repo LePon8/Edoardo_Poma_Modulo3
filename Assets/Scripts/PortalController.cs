@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PortalController : Damag
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(25);
+            Destroy(other.gameObject);
         }
     }
+
+    protected override void TakeDamage(int dmg)
+    {
+        base.TakeDamage(dmg);
+        if (currentHealth <= 0)
+        {
+            UIManager.Instance.GameOver();
+        }
+    }
+
+
 }

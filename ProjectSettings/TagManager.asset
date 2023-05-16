@@ -7,6 +7,8 @@ TagManager:
   - Postazione
   - PostazioneTorretta
   - Enemy
+  - Bullet
+  - Buff
   layers:
   - Default
   - TransparentFX
@@ -14,9 +16,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Mesh
+  - Player
+  - Postazione
   - 
   - 
   - 

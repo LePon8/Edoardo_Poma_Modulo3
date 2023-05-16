@@ -6,8 +6,10 @@ public class Raycast : MonoBehaviour
 {
 
     [SerializeField] bool selectedTor;
-    //[SerializeField] bool selectedPosition;
+    [SerializeField] bool selectedBuff;
+    [SerializeField] LayerMask mask;
     GameObject tor;
+    GameObject buff;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class Raycast : MonoBehaviour
     void Update()
     {
         CameraRaycast();
+        //CameraBuffRaycast();
     }
 
     public void CameraRaycast()
@@ -26,46 +29,79 @@ public class Raycast : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            
-            //GameObject tor = gameObject.CompareTag("Player");
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit,Mathf.Infinity, mask, QueryTriggerInteraction.Ignore))
             {
+                
+
                 if (hit.collider.CompareTag("Player"))
                 {
                     selectedTor = true;
-                    //selectedPosition = false;
                     Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
                     tor = hit.collider.gameObject;
-
-                    //hit.collider.transform.localPosition = hit.transform.localPosition;
-
                 }
-                
-
+                if (hit.collider.CompareTag("Buff"))
+                {
+                    selectedBuff = true;
+                    Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
+                    buff = hit.collider.gameObject;
+                }
 
             }
-            if(selectedTor && hit.collider.CompareTag("Postazione"))
+
+            if (selectedTor && hit.collider.CompareTag("Postazione"))
             {
                 selectedTor = false;
                 Debug.DrawRay(ray.origin, ray.direction * 20, Color.cyan);
-                //selectedPosition = true;
                 tor.transform.position = hit.collider.transform.position;
                 tor.transform.rotation = hit.collider.transform.rotation;
-                
+
             }
 
-            if(selectedTor && hit.collider.CompareTag("PostazioneTorretta"))
+            if (selectedTor && hit.collider.CompareTag("PostazioneTorretta"))
             {
+                selectedTor = false;
                 Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
                 tor.transform.position = hit.collider.transform.position;
                 tor.transform.rotation = hit.collider.transform.rotation;
             }
-            
+            if (selectedBuff && hit.collider.CompareTag("PostazioneTorretta"))
+            {
+                selectedBuff = false;
+                Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
+                buff.transform.position = hit.collider.transform.position;
+            }
+
         }
 
         
     }
+
+    //public void CameraBuffRaycast()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Ray ray2 = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit2;
+    //        if(Physics.Raycast(ray2, out hit2))
+    //        {
+    //            if (hit2.collider.CompareTag("Buff"))
+    //            {
+    //                selectedBuff = true;
+    //                Debug.DrawRay(ray2.origin, ray2.direction * 20, Color.red);
+    //                buff = hit2.collider.gameObject;
+    //            }
+    //        }
+
+    //        if (selectedBuff && hit2.collider.CompareTag("PostazioneTorretta"))
+    //        {
+    //            Debug.DrawRay(ray2.origin, ray2.direction * 20, Color.yellow);
+    //            buff.transform.position = hit2.collider.transform.position;
+    //            buff.transform.rotation = hit2.collider.transform.rotation;
+    //        }
+
+    //    }
+    //}
 
     
 }

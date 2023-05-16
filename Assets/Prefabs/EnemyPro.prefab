@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 2819039316606364179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4215269386544478526}
   - {fileID: 1062423246963454905}
@@ -138,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2694812559181881243
 MonoBehaviour:
@@ -154,7 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   HPBar: {fileID: 7222231932312948835}
-  enemySpeed: 10
+  currentHealth: 0
+  enemySpeed: 5
+  takeDamage: 10
   points: []
 --- !u!1 &3290955137167362587
 GameObject:

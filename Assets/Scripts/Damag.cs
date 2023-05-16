@@ -7,24 +7,25 @@ public abstract class Damag : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] Slider HPBar;
-    private int currentHealth;
+    public int currentHealth;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         currentHealth = maxHealth;
         HPBar.maxValue = maxHealth;
         HPBar.value = HPBar.maxValue;
+
     }
 
-    public void TakeDamage(int dmg)
+    protected virtual void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
         HPBar.value = currentHealth;
         Debug.Log(currentHealth);
 
-        if(currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
+        //if(currentHealth <= 0)
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 }

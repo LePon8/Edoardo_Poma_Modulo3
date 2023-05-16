@@ -8,6 +8,8 @@ public class TorrettaController : MonoBehaviour
 
     private TorrettaMotore torrettaMotore;
 
+    float time;
+
     private void Awake()
     {
         torrettaMotore = new TorrettaMotore(torrettaStats, transform);

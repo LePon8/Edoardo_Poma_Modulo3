@@ -9,7 +9,8 @@ public class TorrettaStats : ScriptableObject
     [SerializeField] private float turnSpeed;
     [SerializeField] private float shootRange;
     [SerializeField] private float shootTime;
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject bulletPrefab;
+    
 
     public float TurnSpeed { get => turnSpeed; }
 
@@ -17,5 +18,5 @@ public class TorrettaStats : ScriptableObject
 
     public float ShootTime { get => shootTime; }
 
-    public GameObject Enemy { get => enemy; }
+    public GameObject BulletPrefab { get => bulletPrefab; }
 }
